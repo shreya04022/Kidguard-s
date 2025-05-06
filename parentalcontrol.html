@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parental Control Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #0078d7;
+            color: white;
+            padding: 10px 20px;
+            width: 100%;
+            text-align: center;
+        }
+        section {
+            margin: 20px;
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        button {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        label {
+            font-size: 14px;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .toggle-switch input {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Parental Control Dashboard</h1>
+    </header>
+    <section>
+        <h2>Set Mobile Usage Time</h2>
+        <div class="input-group">
+            <label for="timeLimit">Enter time limit (in minutes):</label>
+            <input type="number" id="timeLimit" min="1" placeholder="e.g., 60">
+        </div>
+        <button onclick="startTimer()">Start Timer</button>
+    </section>
+    <section>
+        <h2>Content Filter</h2>
+        <div class="toggle-switch">
+            <input type="checkbox" id="blockAdultContent" checked>
+            <label for="blockAdultContent">Block Adult Content</label>
+        </div>
+    </section>
+    <script>
+        function startTimer() {
+            const timeLimit = document.getElementById('timeLimit').value;
+            if (!timeLimit || timeLimit <= 0) {
+                alert('Please enter a valid time limit.');
+                return;
+            }
+
+            alert(`Timer started for ${timeLimit} minutes.`);
+            // Logic to handle timer in backend or frontend
+            setTimeout(() => {
+                alert('Time is up!');
+                // Logic to lock the phone or notify parents
+            }, timeLimit * 60000);
+        }
+
+        document.getElementById('blockAdultContent').addEventListener('change', function () {
+            if (this.checked) {
+                alert('Adult content blocking is ON.');
+                // Logic to enable content filtering
+            } else {
+                alert('Adult content blocking is OFF.');
+                // Logic to disable content filtering
+            }
+        });
+    </script>
+</body>
+</html>
